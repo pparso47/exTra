@@ -11,6 +11,8 @@ usethis::use_tidy_style(strict = TRUE)
 ```{r git_1, include=FALSE}
 usethis::use_git()
 ```
+
+
 ```{r git_2, include=FALSE}
 usethis::create_github_token()
 ```
@@ -19,12 +21,13 @@ usethis::create_github_token()
 gitcreds::gitcreds_set() # Then enter the freshly generated token
 ```
 
-usethis::use_github(
-    organisation = "ggrlab",
-    private = TRUE,
-    visibility = "private"
-)
+```{r git_4, include=FALSE}
+usethis::use_github()
+```
+
+```{r git_5, include=FALSE}
 usethis::use_lifecycle()
+```
 
 usethis::use_tidy_github()
 usethis::use_tidy_github_actions()
