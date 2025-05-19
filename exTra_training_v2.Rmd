@@ -1,0 +1,57 @@
+---
+title: "Package_exTra"
+output: html_document
+date: "2025-05-19"
+---
+
+```{r setup, include=FALSE}
+usethis::use_tidy_style(strict = TRUE)
+```
+
+```{r git_1, include=FALSE}
+usethis::use_git()
+```
+```{r git_2, include=FALSE}
+usethis::create_github_token()
+```
+
+```{r git_3, include=FALSE}
+gitcreds::gitcreds_set() # Then enter the freshly generated token
+```
+
+usethis::use_github(
+    organisation = "ggrlab",
+    private = TRUE,
+    visibility = "private"
+)
+usethis::use_lifecycle()
+
+usethis::use_tidy_github()
+usethis::use_tidy_github_actions()
+# overwrite tidy's default "check-full" with "check-standard"
+# to not run so many checks
+usethis::use_github_action("check-standard")
+usethis::use_tidy_github_labels()
+usethis::use_pkgdown_github_pages()
+
+
+# non-git stuff further
+usethis::use_author(
+    given = "Gunther",
+    family = "Glehr",
+    email = "gunthergl@gmx.net",
+    role = c("aut", "cre"),
+    comment = c("ORCID" = "0000-0002-1495-9162")
+)
+usethis::use_news_md()
+lintr::use_lintr(type = "tidyverse")
+# Change manually to:
+# linters: linters_with_defaults(line_length_linter = line_length_linter(120),indentation_linter = indentation_linter(4)) # see vignette("lintr")
+# encoding: "UTF-8"
+
+# Include all the relevant packages
+usethis::use_package("flowWorkspace")
+usethis::use_package("flowCore")
+usethis::use_package("tibble")
+usethis::use_package("dplyr")
+usethis::use_package("xml2")
